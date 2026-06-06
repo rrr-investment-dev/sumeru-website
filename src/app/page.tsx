@@ -1,101 +1,68 @@
-import Image from "next/image";
+import { Hero } from "@/components/sections/Hero";
+import { FeaturedFund } from "@/components/sections/FeaturedFund";
+import { WhyShaktiSphere } from "@/components/sections/WhyShaktiSphere";
+import { EDGE } from "@/components/sections/EDGE";
+import { Partners } from "@/components/sections/Partners";
+import { Contact } from "@/components/sections/Contact";
+import { Section } from "@/components/ui/Section";
+import { Pill } from "@/components/ui/Pill";
+import { FAQAccordion } from "@/components/sections/FAQAccordion";
+import { Button } from "@/components/ui/Button";
+import { faqCategories } from "@/lib/faq-data";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // Get first 3 FAQs from the first category
+  const homeFaqs = faqCategories[0].items.slice(0, 3);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="bg-px flex flex-col w-full">
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Featured Fund Section */}
+      <FeaturedFund />
+
+      {/* Why Shakti Sphere Section */}
+      <WhyShaktiSphere />
+
+      {/* EDGE Framework Section */}
+      <EDGE />
+
+      {/* Partners Section */}
+      <Partners />
+
+      {/* FAQs Section */}
+      <Section id="faqs" tone="soft" className="py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start w-full">
+          {/* Left Column: Heading and More button */}
+          <div className="col-span-1 lg:col-span-5 flex flex-col items-start text-left">
+            <Pill className="mb-4">FAQs</Pill>
+            <h2 className="h-display text-4xl md:text-5xl leading-tight">
+              Frequently Asked <span className="h-accent">Questions.</span>
+            </h2>
+            <p className="text-base text-ink2 max-w-xl font-light leading-relaxed mt-4">
+              Get clarity on investment sizes, SEBI guidelines, redemption periods, and other administrative details.
+            </p>
+            <Button
+              href="/faqs"
+              variant="ghost"
+              size="lg"
+              withArrow
+              className="mt-8"
+            >
+              More FAQs
+            </Button>
+          </div>
+
+          {/* Right Column: Accordion */}
+          <div className="col-span-1 lg:col-span-7 w-full">
+            <FAQAccordion items={homeFaqs} />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </Section>
+
+      {/* Contact Section */}
+      <Contact />
     </div>
   );
 }
