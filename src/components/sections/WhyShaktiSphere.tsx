@@ -32,13 +32,13 @@ export const WhyShaktiSphere = () => {
   };
 
   return (
-    <Section id="about" tone="soft" className="bg-px-soft relative overflow-hidden">
+    <Section id="about" tone="soft" className="bg-[#FFF4EB] relative overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        className="relative z-10 max-w-[580px] flex flex-col items-start text-left"
+        className="relative z-20 max-w-[580px] flex flex-col items-start text-left"
       >
         {/* Eyebrow badge */}
         <motion.div variants={itemVariants} className="mb-6 w-full">
@@ -72,7 +72,7 @@ export const WhyShaktiSphere = () => {
         </div>
       </motion.div>
 
-      {/* Mountain Illustration as decorative background */}
+      {/* Layer 2: Mountain Illustration */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-0 right-0 w-[65%] hidden md:block z-0"
@@ -86,6 +86,17 @@ export const WhyShaktiSphere = () => {
           priority={false}
         />
       </div>
+
+      {/* Layer 3: Halftone dots overlay — sits above the mountain, below text */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Crect width='1' height='1' fill='%23D25000' fill-opacity='0.22'/%3E%3C/svg%3E\")",
+          backgroundRepeat: "repeat",
+        }}
+      />
     </Section>
   );
 };

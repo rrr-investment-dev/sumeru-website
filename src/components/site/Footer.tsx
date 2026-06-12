@@ -32,12 +32,12 @@ export const Footer = () => {
           <div className="col-span-1 lg:col-span-4 flex flex-col items-start">
             <div className="flex items-center gap-2.5 mb-2">
               <Logo size={28} className="shrink-0" />
-              <span className="h-display text-paper text-3xl leading-none">
-                Shakti Sphere
+              <span className="h-display !text-paper text-3xl leading-none">
+                Sumeru
               </span>
             </div>
             <p className="text-paper/60 text-sm max-w-[320px] mt-4 font-light leading-relaxed">
-              Investment management. Home of Sumeru India Growth Fund, a Category III AIF investing in India&apos;s next decade of wealth creation.
+              A Category III AIF managed by Shakti Sphere. Partnering in India&apos;s next decade of wealth creation.
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export const Footer = () => {
             >
               info@sumerufunds.com
             </a>
-            
+
             <div className="flex items-center gap-4">
               <Button href="/#contact" variant="accent" size="sm" withArrow>
                 Get in Touch
@@ -117,7 +117,7 @@ export const Footer = () => {
           {/* Bottom Bar: Copyright & Legal Disclaimer */}
           <div className="col-span-1 lg:col-span-12 mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <span className="text-paper/50 text-xs font-light">
-              &copy; 2025 Shakti Sphere. All rights reserved.
+              &copy; 2025 Shakti Sphere. Sumeru India Growth Fund. All rights reserved.
             </span>
             <span className="text-paper/50 text-[10px] leading-relaxed font-light max-w-[640px] text-left md:text-right">
               This website is for informational purposes only and does not constitute an offer or solicitation. Please refer to the PPM and other definitive documents for complete terms, risks, fees, and conditions.

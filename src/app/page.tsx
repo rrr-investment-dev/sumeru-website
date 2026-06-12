@@ -1,6 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { FeaturedFund } from "@/components/sections/FeaturedFund";
-import { WhyShaktiSphere } from "@/components/sections/WhyShaktiSphere";
+import { PhilosophyOfSumeru } from "@/components/sections/PhilosophyOfSumeru";
 import { EDGE } from "@/components/sections/EDGE";
 import { Partners } from "@/components/sections/Partners";
 import { Contact } from "@/components/sections/Contact";
@@ -22,8 +22,8 @@ export default function Home() {
       {/* Featured Fund Section */}
       <FeaturedFund />
 
-      {/* Why Shakti Sphere Section */}
-      <WhyShaktiSphere />
+      {/* Philosophy of Sumeru Section */}
+      <PhilosophyOfSumeru />
 
       {/* EDGE Framework Section */}
       <EDGE />

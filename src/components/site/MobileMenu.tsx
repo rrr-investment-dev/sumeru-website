@@ -3,15 +3,17 @@
 import React, { useEffect } from "react";
 import { X } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
-
 import { Logo } from "../ui/Logo";
+
+const MotionLink = motion.create(Link);
 
 const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "Funds", href: "/#funds" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/#philosophy" },
   { label: "Investment Thesis", href: "/#thesis" },
   { label: "FAQs", href: "/faqs" },
 ];
@@ -81,7 +83,7 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
               className="flex items-center gap-2.5 hover:opacity-85 transition-opacity"
             >
               <Logo size={26} className="shrink-0" />
-              <span className="h-display text-2xl">Shakti Sphere</span>
+              <span className="h-display text-2xl">Sumeru</span>
             </a>
             <button
               onClick={onClose}
@@ -97,19 +99,33 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
         <div className="flex-1 overflow-y-auto py-8">
           <Container>
             <nav className="flex flex-col gap-5">
-              {NAV_LINKS.map((link, idx) => (
-                <motion.a
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.04 }}
-                  key={link.label}
-                  href={link.href}
-                  onClick={onClose}
-                  className="h-display text-4xl text-ink hover:text-brand-primary transition-colors py-2 border-b border-line/40"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
+              {NAV_LINKS.map((link, idx) =>
+                link.href.startsWith("/#") ? (
+                  <motion.a
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.04 }}
+                    key={link.label}
+                    href={link.href}
+                    onClick={onClose}
+                    className="h-display text-4xl text-ink hover:text-brand-primary transition-colors py-2 border-b border-line/40"
+                  >
+                    {link.label}
+                  </motion.a>
+                ) : (
+                  <MotionLink
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.04 }}
+                    key={link.label}
+                    href={link.href}
+                    onClick={onClose}
+                    className="h-display text-4xl text-ink hover:text-brand-primary transition-colors py-2 border-b border-line/40"
+                  >
+                    {link.label}
+                  </MotionLink>
+                )
+              )}
             </nav>
           </Container>
         </div>

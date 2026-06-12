@@ -216,7 +216,7 @@ export const Contact = () => {
                 </div>
 
                 {/* Submit button */}
-                <Button type="submit" variant="accent" size="lg" withArrow className="w-full">
+                <Button type="submit" variant="ghost" size="lg" withArrow className="w-full">
                   Send message
                 </Button>
               </form>

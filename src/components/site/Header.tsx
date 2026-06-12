@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { MobileMenu } from "./MobileMenu";
@@ -12,8 +13,8 @@ import { Logo } from "../ui/Logo";
 
 const NAV_LINKS = [
   { label: "Home", href: "/#home" },
-  { label: "Funds", href: "/#funds" },
-  { label: "About", href: "/#about" },
+  { label: "Fund", href: "/#funds" },
+  { label: "About", href: "/#philosophy" },
   { label: "Investment Thesis", href: "/#thesis" },
   { label: "FAQs", href: "/faqs" },
 ];
@@ -48,22 +49,32 @@ export const Header = () => {
       >
         <Container className="flex items-center justify-between">
           {/* Brand Wordmark */}
-          <a href="/#home" className="flex items-center gap-2.5 hover:opacity-85 transition-opacity">
+          <Link href="/#home" className="flex items-center gap-2.5 hover:opacity-85 transition-opacity">
             <Logo size={26} className="shrink-0" />
-            <span className="h-display text-2xl">Shakti Sphere</span>
-          </a>
+            <span className="h-display text-2xl">Sumeru</span>
+          </Link>
 
           {/* Center Nav Link (Desktop Only) */}
           <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="font-sans font-medium text-[14px] tracking-[-0.01em] text-ink2 hover:text-ink transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href.startsWith("/#") ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="font-sans font-medium text-[14px] tracking-[-0.01em] text-ink2 hover:text-ink transition-colors"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="font-sans font-medium text-[14px] tracking-[-0.01em] text-ink2 hover:text-ink transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Right CTA / Mobile hamburger */}

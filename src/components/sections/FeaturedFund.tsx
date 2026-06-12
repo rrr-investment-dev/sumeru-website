@@ -23,8 +23,8 @@ const STAT_CARDS = [
   },
   {
     label: "Opportunity Set",
-    value: "Late-stage · Pre-IPO",
-    desc: "Includes PIPE and selected listed equity.",
+    value: "Late-stage · Pre-IPO · PIPE",
+    desc: "Selected listed opportunities",
   },
 ];
 
@@ -61,7 +61,7 @@ export const FeaturedFund = () => {
       {/* 1) Fund Intro Block (Left-Aligned) */}
       <div className="max-w-[920px] flex flex-col items-start text-left">
         <SectionMarker number="01" label="Flagship Fund" />
-        
+
         <motion.h2
           initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,9 +71,9 @@ export const FeaturedFund = () => {
         >
           Sumeru India Growth Fund (SIGF)
         </motion.h2>
-        
+
         <p className="text-lg text-ink2 leading-[1.6] max-w-[680px] mt-4 font-light">
-          Our first fund is a SEBI-registered Category III AIF investing across late-stage private, pre-IPO, selective anchor, and listed equity opportunities. Disciplined, research-led, and built for India&apos;s structural growth decade.
+          First fund is a SEBI-registered Category III AIF investing across late-stage private, pre-IPO, selective anchor, and listed equity opportunities. Disciplined, research-led, and built for India&apos;s structural growth decade.
         </p>
       </div>
 

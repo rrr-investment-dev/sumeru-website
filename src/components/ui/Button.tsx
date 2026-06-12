@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -114,6 +115,20 @@ export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Po
     );
 
     if (href) {
+      // Use Next.js Link for internal routes (client-side nav), plain <a> for external URLs or same-page hash links
+      const isInternalRoute = href.startsWith("/") && !href.startsWith("//");
+      if (isInternalRoute) {
+        return (
+          <Link
+            ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+            href={href}
+            className={cn("group", combinedClasses)}
+            {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+          >
+            {content}
+          </Link>
+        );
+      }
       return (
         <a
           ref={ref as React.ForwardedRef<HTMLAnchorElement>}
