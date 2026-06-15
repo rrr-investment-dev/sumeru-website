@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "../ui/Section";
 import { SectionMarker } from "../ui/SectionMarker";
@@ -10,16 +11,30 @@ const PARTNERS = [
     role: "Legal Advisor",
     initials: "G&A",
     name: "Gandhi & Associates LLP",
+    logo: null as string | null,
+    logoAlt: "",
+    logoClassName: "",
+    imageClassName: "",
+    // TODO: Replace logo: null with logo: "/images/gandhi-associates.png"
+    //       and provide the image file when available.
   },
   {
     role: "Trustee",
     initials: "ATSL",
     name: "Axis Trustee Services Limited",
+    logo: "/images/axis-trustee.png",
+    logoAlt: "Axis Trustee Services Limited",
+    logoClassName: "h-full w-full",
+    imageClassName: "scale-[2.4] translate-x-[6px] translate-y-3",
   },
   {
     role: "Merchant Banker",
     initials: "SKI",
     name: "SKI Capital Services Limited",
+    logo: "/images/ski-capital.png",
+    logoAlt: "SKI Capital Services Limited",
+    logoClassName: "h-14 w-full",
+    imageClassName: "",
   },
 ];
 
@@ -58,7 +73,7 @@ export const Partners = () => {
         <div className="flex justify-center mb-4">
           <SectionMarker number="04" label="Partners" />
         </div>
-        
+
         <motion.h2
           initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +83,7 @@ export const Partners = () => {
         >
           Anchored by trusted institutions.
         </motion.h2>
-        
+
         <p className="text-ink2 text-base text-center max-w-[560px] mx-auto mt-3 font-light">
           Institutional partners supporting Sumeru India Growth Fund.
         </p>
@@ -86,21 +101,33 @@ export const Partners = () => {
           <motion.div
             key={idx}
             variants={cardVariants}
-            className="bg-card border border-line rounded-2xl p-8 text-center flex flex-col items-center justify-between min-h-[250px] transition-all duration-300 hover:border-brand-primary/45"
+            className="group bg-card border border-line rounded-2xl p-8 text-center flex flex-col items-center justify-between min-h-[250px] transition-all duration-300 hover:border-brand-primary/45 hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(210,80,0,0.06)]"
           >
             {/* Top uppercase role label */}
             <div className="font-sans font-semibold text-xs tracking-[0.14em] text-brand-deep uppercase mb-4 leading-none">
               {partner.role}
             </div>
 
-            {/* Middle placeholder logo block */}
-            <div className="bg-px-plate rounded-xl w-full h-[64px] flex items-center justify-center border border-brand-primary/10 mb-4 select-none">
-              <span className="h-display text-3xl text-ink">
-                {partner.initials}
-              </span>
+            {/* Logo plate — image if available, text initials as fallback */}
+            <div className="bg-paper border border-line/40 rounded-2xl h-28 w-full flex items-center justify-center px-6 overflow-hidden mb-4 transition-all duration-300 group-hover:bg-white group-hover:border-brand-primary/20">
+              {partner.logo ? (
+                <div className={`relative w-full ${partner.logoClassName} transition-transform duration-300 group-hover:scale-105`}>
+                  <Image
+                    src={partner.logo}
+                    alt={partner.logoAlt}
+                    fill
+                    className={`object-contain ${partner.imageClassName}`}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              ) : (
+                <span className="h-display text-3xl text-ink transition-transform duration-300 group-hover:scale-105">
+                  {partner.initials}
+                </span>
+              )}
             </div>
 
-            {/* Bottom partner name and description */}
+            {/* Bottom partner name and role descriptor */}
             <div className="flex flex-col items-center mt-2">
               <span className="font-sans font-semibold text-base text-ink leading-tight">
                 {partner.name}

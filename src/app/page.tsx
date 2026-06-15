@@ -45,7 +45,7 @@ export default function Home() {
             </p>
             <Button
               href="/faqs"
-              variant="ghost"
+              variant="accent"
               size="lg"
               withArrow
               className="mt-8"

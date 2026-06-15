@@ -60,7 +60,7 @@ export const FeaturedFund = () => {
     >
       {/* 1) Fund Intro Block (Left-Aligned) */}
       <div className="max-w-[920px] flex flex-col items-start text-left">
-        <SectionMarker number="01" label="Flagship Fund" />
+        <SectionMarker number="01" label="Fund" />
 
         <motion.h2
           initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}

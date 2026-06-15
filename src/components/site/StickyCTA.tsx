@@ -9,7 +9,7 @@ export const StickyCTA = () => {
   const [nearContact, setNearContact] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   const prefersReducedMotion = useReducedMotion() ?? false;
 
   // Listen to mobile menu state changes on <html> element
@@ -47,7 +47,7 @@ export const StickyCTA = () => {
       setScrollY(window.scrollY);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
+
     // Resize listener to adjust size between sm and md
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 640);
@@ -116,7 +116,7 @@ export const StickyCTA = () => {
               aria-hidden="false"
               className="min-w-[48px] min-h-[48px]"
             >
-              Get in Touch
+              Talk to Us
             </Button>
           </div>
         </motion.div>

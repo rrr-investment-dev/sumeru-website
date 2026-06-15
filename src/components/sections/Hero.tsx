@@ -75,9 +75,9 @@ export const Hero = () => {
 
           {/* Action CTAs */}
           <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mt-8">
-            <Button variant="accent" size="lg" withArrow href="#funds">
+            {/* <Button variant="accent" size="lg" withArrow href="#funds">
               Explore the Fund
-            </Button>
+            </Button> */}
             <Button variant="ghost" size="lg" href="#contact">
               Talk to us
             </Button>
