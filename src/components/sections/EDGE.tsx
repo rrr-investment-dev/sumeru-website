@@ -9,25 +9,25 @@ import { cn } from "@/lib/utils";
 
 const FILTERS = [
   {
-    num: "FILTER 01",
+    num: "01",
     letter: "E",
     title: "Earnings Durability",
     body: "Strong profitability, healthy cash conversion, stable margins, and low customer concentration. We invest in businesses whose economics compound, not promises.",
   },
   {
-    num: "FILTER 02",
+    num: "02",
     letter: "D",
     title: "Discipline on Price",
     body: "Clear margin of safety at entry, with a favorable upside-downside profile. Discipline at entry is the simplest way to widen the path to a great outcome.",
   },
   {
-    num: "FILTER 03",
+    num: "03",
     letter: "G",
     title: "Governance First",
     body: "Zero compromise on promoter quality, audit standards, related-party transparency, and litigation clearance.",
   },
   {
-    num: "FILTER 04",
+    num: "04",
     letter: "E",
     title: "Exit Path",
     body: "Mapped exit route: IPO or listing visibility typically within a 12-48 month cycle. Underwritten to clarity, not hope.",
