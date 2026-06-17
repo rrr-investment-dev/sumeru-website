@@ -10,19 +10,49 @@ import { Button } from "../ui/Button";
 export const Contact = () => {
   const prefersReducedMotion = useReducedMotion() ?? false;
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     city: "",
-    investorType: "HNI",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission and transition to success panel
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          from_name: "Sumeru Website Contact Form",
+          subject: `New Sumeru Inquiry from ${formData.name}`,
+          ...formData,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Failed to send message. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleInputChange = (
@@ -179,27 +209,6 @@ export const Contact = () => {
                   </div>
                 </div>
 
-                {/* Investor Type Select */}
-                <div className="flex flex-col mb-4">
-                  <label htmlFor="form-investorType" className="block text-xs font-semibold text-ink uppercase tracking-wider mb-2">
-                    Investor Type
-                  </label>
-                  <select
-                    id="form-investorType"
-                    name="investorType"
-                    value={formData.investorType}
-                    onChange={handleInputChange}
-                    className="w-full h-11 bg-card border border-line rounded-xl px-4 text-[15px] text-ink focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%234A413B%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:16px] bg-[right_16px_center] bg-no-repeat"
-                  >
-                    <option value="HNI">HNI</option>
-                    <option value="Family Office">Family Office</option>
-                    <option value="Corporate">Corporate</option>
-                    <option value="NRI">NRI</option>
-                    <option value="Institutional">Institutional</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
                 {/* Message Textarea */}
                 <div className="flex flex-col mb-6">
                   <label htmlFor="form-message" className="block text-xs font-semibold text-ink uppercase tracking-wider mb-2">
@@ -215,9 +224,22 @@ export const Contact = () => {
                   />
                 </div>
 
+                {error && (
+                  <div className="text-red-500 text-sm mb-4 font-medium text-center">
+                    {error}
+                  </div>
+                )}
+ 
                 {/* Submit button */}
-                <Button type="submit" variant="ghost" size="lg" withArrow className="w-full">
-                  Send message
+                <Button 
+                  type="submit" 
+                  variant="ghost" 
+                  size="lg" 
+                  withArrow 
+                  className="w-full"
+                  disabled={submitting}
+                >
+                  {submitting ? "Sending..." : "Send message"}
                 </Button>
               </form>
             )}

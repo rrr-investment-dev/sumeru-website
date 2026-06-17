@@ -11,12 +11,10 @@ const PARTNERS = [
     role: "Legal Advisor",
     initials: "G&A",
     name: "Gandhi & Associates LLP",
-    logo: null as string | null,
-    logoAlt: "",
-    logoClassName: "",
-    imageClassName: "",
-    // TODO: Replace logo: null with logo: "/images/gandhi-associates.png"
-    //       and provide the image file when available.
+    logo: "/images/gandhi-associates.png",
+    logoAlt: "Gandhi & Associates LLP",
+    logoClassName: "h-full w-full",
+    imageClassName: "scale-[1.8]",
   },
   {
     role: "Trustee",
