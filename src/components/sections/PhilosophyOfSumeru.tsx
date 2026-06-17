@@ -13,7 +13,7 @@ export function PhilosophyOfSumeru() {
       {/* Mountain image — atmospheric background at low opacity */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-150px] right-[-30px] w-[55%] h-[60%] hidden md:block z-0"
+        className="pointer-events-none absolute bottom-[-150px] right-[-10px] w-[55%] h-[60%] hidden md:block z-0"
       >
         <Image
           src="/images/mountain-why.png"
