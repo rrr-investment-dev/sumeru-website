@@ -13,8 +13,7 @@ import { Logo } from "../ui/Logo";
 
 const NAV_LINKS = [
   { label: "Home", href: "/#home" },
-  { label: "Fund", href: "/#funds" },
-  { label: "About", href: "/#philosophy" },
+  { label: "About the Fund", href: "/#funds" },
   { label: "Investment Thesis", href: "/#thesis" },
   { label: "FAQs", href: "/faqs" },
 ];
